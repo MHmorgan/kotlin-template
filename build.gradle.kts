@@ -43,6 +43,14 @@ tasks.named<Test>("test") {
     useJUnitPlatform()
 }
 
-tasks.dokkaGfm {
+tasks.dokkaHtml {
     outputDirectory.set(file("$rootDir/docs"))
+
+    dokkaSourceSets {
+        named("main") {
+            // Use DOC.md in root for package documentation.
+            includes.from("DOC.md")
+        }
+    }
 }
+
